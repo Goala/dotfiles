@@ -33,8 +33,7 @@
 	    "custom/notification",
 	    "battery",
 	    "battery#bat2",
-	    // "custom/power",
-	    "group/group-power",
+	    "custom/power",
     ],
     // Modules configuration
     "sway/workspaces": {
@@ -228,16 +227,9 @@
 	// "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/power": {
-	    "format" : "⏻ ",
+	    "format": " ⏻ ",
 	    "tooltip": false,
-	    "menu": "on-click",
-	    "menu-file": "/usr/share/waybar/custom_modules/power_menu.xml", // Menu file in resources folder
-	    "menu-actions": {
-		    "shutdown": "systemctl shutdown",
-		    "reboot": "systemctl reboot",
-		    "suspend": "systemctl suspend",
-		    "hibernate": "systemctl hibernate"
-	    }
+	    "on-click": "wlogout --protocol layer-shell"
     },
     "custom/notification": {
 	    "tooltip": true,
@@ -262,33 +254,5 @@
     "sway/window": {
 	    "format": "{}"
     },
-    "group/group-power": {
-	    "orientation": "inherit",
-	    "drawer": {
-		    "transition-duration": 500,
-		    "children-class": "not-power",
-		    "transition-left-to-right": false,
-	    },
-	    "modules": [
-		    "custom/power", // First element is the "group leader" and won't ever be hidden
-		    "custom/quit",
-		    "custom/lock",
-		    "custom/reboot",
-	    ]
-    },
-    "custom/quit": {
-	    "format": "󰗼",
-	    "tooltip": false,
-	    "on-click": "hyprctl dispatch exit"
-    },
-    "custom/reboot": {
-	    "format": "󰜉",
-	    "tooltip": false,
-	    "on-click": "reboot"
-    },
-    "custom/power": {
-	    "format": "",
-	    "tooltip": false,
-	    "on-click": "shutdown now"
-    }
+
 }
