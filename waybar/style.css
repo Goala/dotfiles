@@ -1,0 +1,207 @@
+/* =========================================================
+Cyberpunk Neon – Waybar Style
+Abgeleitet aus generiertem Wallpaper
+Ziel: ruhig, kontrastreich, wallpaper-freundlich
+========================================================= */
+
+/* ---------- Global ---------- */
+
+* {
+	border: none;
+	border-radius: 4px;
+	font-family: "JetBrainsMono Nerd Font", monospace;
+	font-size: 13px;
+	min-height: 0;
+}
+
+/* ---------- Bar ---------- */
+window#waybar {
+	/* background: #0E0B16; */
+	background: rgba(14, 11, 22, 0.5);
+	color: #E6E2F2;        /* Primary text */
+	transition-property: background-color;
+	transition-duration: 0.3s;
+}
+
+/* ---------- Tooltip ---------- */
+tooltip {
+	background: #1B1630;
+	border-radius: 4px;
+	border: 1px solid #241E3D;
+}
+
+tooltip label {
+	color: #E6E2F2;
+}
+
+/* ---------- Common module style ---------- */
+/* #workspaces button, */
+#clock,
+#battery,
+#network,
+#pulseaudio,
+#tray,
+#power-profiles-daemon,
+#backlight,
+#custom-notification,
+#custom-media {
+	/* background: #1B1630; */
+	background: rgba(27, 22, 48, 0.70);
+	padding: 4px 8px;
+	margin: 2px 2px;
+	color: #9B96B5;        /* Muted text */
+}
+
+/* Hover (subtle, no neon) */
+#clock:hover,
+#battery:hover,
+#network:hover,
+#pulseaudio:hover,
+#tray:hover,
+#power-profiles-daemon:hover,
+#custom-notification:hover,
+#backlight:hover {
+	background: rgba(36, 30, 61, 0.70);
+}
+
+/* ---------- Workspaces ---------- */
+#workspaces {
+	background: rgba(27, 22, 48, 0.70);
+	border-radius: 4px;
+	/* padding: 4px 6px; */
+	margin: 2px;
+}
+
+#workspaces button {
+	background: transparent;
+	padding: 4px 6px;
+	margin: 0;
+	color: #9B96B5;
+	border-radius: 4px;
+
+	transition:
+	color 0.35s cubic-bezier(0.4, 0.0, 0.2, 1),
+	box-shadow 0.35s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+#workspaces button.focused {
+	color: #4FC3FF;
+	box-shadow: inset 0 -2px #4FC3FF;
+	animation: none;
+}
+
+#workspaces button:hover {
+	background: rgba(36, 30, 61, 0.50);
+}
+
+@keyframes urgent-pulse {
+	0% {
+		box-shadow: inset 0 2px 0 rgba(255, 79, 216, 0.4);
+		color: rgba(255, 79, 216, 0.7);
+	}
+	50% {
+		box-shadow: inset 0 3px 0 rgba(255, 79, 216, 1.0);
+		color: rgba(255, 79, 216, 1.0);
+	}
+	100% {
+		box-shadow: inset 0 2px 0 rgba(255, 79, 216, 0.4);
+		color: rgba(255, 79, 216, 0.7);
+	}
+}
+
+#workspaces button.urgent {
+	color: rgba(255, 79, 216, 0.7);
+	box-shadow: inset 0 2px 0 rgba(255, 79, 216, 0.4);
+	animation: urgent-pulse 1.6s ease-in-out infinite;
+	animation-fill-mode: both;
+}
+
+#workspaces button.urgent:not(.focused) {
+	animation: urgent-pulse 1.6s ease-in-out infinite;
+}
+
+/* ---------- Clock ---------- */
+#clock {
+	color: #B96CFF; /* Neon Purple */
+	font-weight: 600;
+}
+
+/* ---------- Network ---------- */
+#network {
+	color: #3FFFD8; /* Neon Cyan */
+}
+
+#network.disconnected {
+	color: #FF4FD8;
+}
+
+/* ---------- Audio ---------- */
+#pulseaudio {
+	color: #4FC3FF;
+}
+
+#pulseaudio.muted {
+	color: #9B96B5;
+}
+
+/* ---------- Battery ---------- */
+#battery {
+	color: #4DFF88; /* Neon Green */
+}
+
+#battery.warning {
+	color: #FFB84D;
+}
+
+#battery.critical {
+	color: #FF4FD8;
+}
+
+/* ---------- System ---------- */
+#cpu {
+	color: #4FC3FF;
+
+}
+
+#memory {
+	color: #B96CFF;
+	margin: 0 8px;
+}
+
+#temperature {
+	color: #3FFFD8;
+}
+
+#temperature.critical {
+	color: #FF4FD8;
+}
+
+#system-block {
+	background: rgba(14, 11, 22, 0.5);
+	border-radius: 4px;
+	padding: 0 8px;
+}
+
+#system-block:hover {
+	background: rgba(22, 18, 34, 0.5); /* Heller und leicht andere Nuance */
+}
+/* ---------- Tray ---------- */
+#tray {
+	padding-right: 8px;
+}
+
+/* ---------- Backlight ---------- */
+#backlight {
+	color: #FFB84D;
+}
+
+/* ---------- Media (optional) ---------- */
+#custom-media {
+	color: #E6E2F2;
+	font-style: italic;
+}
+
+#custom-power {
+	color: #FF3B3B;
+}
+
