@@ -37,9 +37,7 @@ Ziel: ruhig, kontrastreich, wallpaper-freundlich
 @define-color urgent-pulse-color rgba(255, 79, 216, 0.7);
 @define-color urgent-pulse-color-full rgba(255, 79, 216, 1);
 
-
 @define-color primary-color #007bff;
-
 
 /* ---------- Global ---------- */
 * {
@@ -80,6 +78,7 @@ tooltip label {
 #power-profiles-daemon,
 #backlight,
 #custom-notification,
+#custom-power,
 #custom-media {
   /* background: #1B1630; */
   background: @bg-module;
@@ -96,6 +95,7 @@ tooltip label {
 #tray:hover,
 #power-profiles-daemon:hover,
 #custom-notification:hover,
+#custom-power:hover,
 #backlight:hover {
   background: @bg-hover;
 }
@@ -227,4 +227,27 @@ tooltip label {
 
 #custom-power {
   color: @accent-red;
+  padding: 0 8px;
+}
+
+/* ---------- Power Profiles Daemon ---------- */
+#power-profiles-daemon {
+  color: @neon-cyan;
+  font-weight: 600;
+}
+
+#power-profiles-daemon.performance {
+  color: @neon-pink;
+}
+
+#power-profiles-daemon.balanced {
+  color: @neon-blue;
+}
+
+#power-profiles-daemon.power-saver {
+  color: @neon-green;
+}
+
+#power-profiles-daemon:hover {
+  background: @bg-hover;
 }

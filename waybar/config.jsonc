@@ -19,7 +19,6 @@
     "mpd",
     // "idle_inhibitor",
     "pulseaudio",
-    "network",
     "power-profiles-daemon",
     // "cpu",
     // "memory",
@@ -28,6 +27,7 @@
     "keyboard-state",
     "sway/language",
     "custom/notification",
+    "network",
     "battery",
     "battery#bat2",
     "custom/power",
@@ -53,12 +53,12 @@
   },
   "group/system-block": {
     "orientation": "horizontal",
-    //      "drawer": {
-    //     "transition-duration": 500,
-    //     "children-class": "not-power",
-    //     "transition-left-to-right": false,
-    // },
-    "modules": ["cpu", "memory", "temperature"],
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-power",
+      "transition-left-to-right": false,
+    },
+    "modules": ["temperature", "cpu", "memory"],
   },
   "keyboard-state": {
     "numlock": true,
@@ -220,7 +220,7 @@
     // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
   },
   "custom/power": {
-    "format": " ⏻ ",
+    "format": "⏻",
     "tooltip": false,
     "on-click": "wlogout --protocol layer-shell",
   },
