@@ -4,8 +4,44 @@ Abgeleitet aus generiertem Wallpaper
 Ziel: ruhig, kontrastreich, wallpaper-freundlich
 ========================================================= */
 
-/* ---------- Global ---------- */
+/* ---------- Color Variables ---------- */
+/* Backgrounds */
+@define-color bg-main rgba(14, 11, 22, 0.5);
+@define-color bg-tooltip #1b1630;
+@define-color bg-module rgba(27, 22, 48, 0.7);
+@define-color bg-hover rgba(36, 30, 61, 0.7);
+@define-color bg-workspace-hover rgba(36, 30, 61, 0.5);
+@define-color bg-system-block rgba(14, 11, 22, 0.5);
+@define-color bg-system-block-hover rgba(22, 18, 34, 0.5);
 
+/* Neon Colors */
+@define-color neon-purple #b96cff;
+@define-color neon-cyan #3fffd8;
+@define-color neon-green #4dff88;
+@define-color neon-blue #4fc3ff;
+@define-color neon-pink #ff4fd8;
+
+/* Muted & Text */
+@define-color text-primary #e6e2f2;
+@define-color text-muted #9b96b5;
+
+/* Accent & Warning */
+@define-color accent-warning #ffb84d;
+@define-color accent-red #ff3b3b;
+
+/* Border */
+@define-color border-tooltip #241e3d;
+
+/* Animation */
+@define-color urgent-pulse-shadow rgba(255, 79, 216, 0.4);
+@define-color urgent-pulse-color rgba(255, 79, 216, 0.7);
+@define-color urgent-pulse-color-full rgba(255, 79, 216, 1);
+
+
+@define-color primary-color #007bff;
+
+
+/* ---------- Global ---------- */
 * {
   border: none;
   border-radius: 4px;
@@ -16,22 +52,22 @@ Ziel: ruhig, kontrastreich, wallpaper-freundlich
 
 /* ---------- Bar ---------- */
 window#waybar {
-  /* background: #0E0B16; */
-  background: rgba(14, 11, 22, 0.5);
-  color: #e6e2f2; /* Primary text */
+  /* background: #1E0B16; */
+  background: @bg-main;
+  color: @text-primary; /* Primary text */
   transition-property: background-color;
   transition-duration: 0.3s;
 }
 
 /* ---------- Tooltip ---------- */
 tooltip {
-  background: #1b1630;
+  background: @bg-tooltip;
   border-radius: 4px;
-  border: 1px solid #241e3d;
+  border: 1px solid @border-tooltip;
 }
 
 tooltip label {
-  color: #e6e2f2;
+  color: @text-primary;
 }
 
 /* ---------- Common module style ---------- */
@@ -46,10 +82,10 @@ tooltip label {
 #custom-notification,
 #custom-media {
   /* background: #1B1630; */
-  background: rgba(27, 22, 48, 0.7);
+  background: @bg-module;
   padding: 4px 8px;
   margin: 2px 2px;
-  color: #9b96b5; /* Muted text */
+  color: @text-muted;
 }
 
 /* Hover (subtle, no neon) */
@@ -61,12 +97,12 @@ tooltip label {
 #power-profiles-daemon:hover,
 #custom-notification:hover,
 #backlight:hover {
-  background: rgba(36, 30, 61, 0.7);
+  background: @bg-hover;
 }
 
 /* ---------- Workspaces ---------- */
 #workspaces {
-  background: rgba(27, 22, 48, 0.7);
+  background: @bg-module;
   border-radius: 4px;
   /* padding: 4px 6px; */
   margin: 2px;
@@ -76,7 +112,7 @@ tooltip label {
   background: transparent;
   padding: 4px 6px;
   margin: 0;
-  color: #9b96b5;
+  color: @text-muted;
   border-radius: 4px;
 
   transition:
@@ -85,33 +121,33 @@ tooltip label {
 }
 
 #workspaces button.focused {
-  color: #4fc3ff;
-  box-shadow: inset 0 -2px #4fc3ff;
+  color: @neon-blue;
+  box-shadow: inset 0 -2px @neon-blue;
   animation: none;
 }
 
 #workspaces button:hover {
-  background: rgba(36, 30, 61, 0.5);
+  background: @bg-workspace-hover;
 }
 
 @keyframes urgent-pulse {
   0% {
-    box-shadow: inset 0 2px 0 rgba(255, 79, 216, 0.4);
-    color: rgba(255, 79, 216, 0.7);
+    box-shadow: inset 0 2px 0 @urgent-pulse-shadow;
+    color: @urgent-pulse-color;
   }
   50% {
-    box-shadow: inset 0 3px 0 rgba(255, 79, 216, 1);
-    color: rgba(255, 79, 216, 1);
+    box-shadow: inset 0 3px 0 @urgent-pulse-color-full;
+    color: @urgent-pulse-color-full;
   }
   100% {
-    box-shadow: inset 0 2px 0 rgba(255, 79, 216, 0.4);
-    color: rgba(255, 79, 216, 0.7);
+    box-shadow: inset 0 2px 0 @urgent-pulse-shadow;
+    color: @urgent-pulse-color;
   }
 }
 
 #workspaces button.urgent {
-  color: rgba(255, 79, 216, 0.7);
-  box-shadow: inset 0 2px 0 rgba(255, 79, 216, 0.4);
+  color: @urgent-pulse-color;
+  box-shadow: inset 0 2px 0 @urgent-pulse-shadow;
   animation: urgent-pulse 1.6s ease-in-out infinite;
   animation-fill-mode: both;
 }
@@ -122,84 +158,73 @@ tooltip label {
 
 /* ---------- Clock ---------- */
 #clock {
-  color: #b96cff; /* Neon Purple */
+  color: @neon-purple;
   font-weight: 600;
 }
 
 /* ---------- Network ---------- */
 #network {
-  color: #3fffd8; /* Neon Cyan */
+  color: @neon-cyan;
 }
 
 #network.disconnected {
-  color: #ff4fd8;
+  color: @neon-pink;
 }
 
 /* ---------- Audio ---------- */
 #pulseaudio {
-  color: #4fc3ff;
+  color: @neon-blue;
 }
 
 #pulseaudio.muted {
-  color: #9b96b5;
+  color: @text-muted;
 }
 
 /* ---------- Battery ---------- */
 #battery {
-  color: #4dff88; /* Neon Green */
+  color: @neon-green;
 }
 
 #battery.warning {
-  color: #ffb84d;
+  color: @accent-warning;
 }
 
 #battery.critical {
-  color: #ff4fd8;
+  color: @neon-pink;
 }
 
 /* ---------- System ---------- */
 #cpu {
-  color: #4fc3ff;
+  color: @neon-blue;
 }
 
 #memory {
-  color: #b96cff;
+  color: @neon-purple;
   margin: 0 8px;
 }
 
 #temperature {
-  color: #3fffd8;
+  color: @neon-cyan;
 }
 
 #temperature.critical {
-  color: #ff4fd8;
+  color: @neon-pink;
 }
 
 #system-block {
-  background: rgba(14, 11, 22, 0.5);
+  background: @bg-system-block;
   border-radius: 4px;
   padding: 0 8px;
 }
 
 #system-block:hover {
-  background: rgba(22, 18, 34, 0.5); /* Heller und leicht andere Nuance */
+  background: @bg-system-block-hover;
 }
 /* ---------- Tray ---------- */
 #tray {
   padding-right: 8px;
 }
 
-/* ---------- Backlight ---------- */
-#backlight {
-  color: #ffb84d;
-}
-
-/* ---------- Media (optional) ---------- */
-#custom-media {
-  color: #e6e2f2;
-  font-style: italic;
-}
-
 #custom-power {
-  color: #ff3b3b;
+  color: @accent-red;
 }
