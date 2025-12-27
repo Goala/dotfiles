@@ -249,6 +249,11 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86KbdBrightnessDown exec sudo brightnessctl --device="smc::kbd_backlight" set 10%-
     bindsym --locked XF86KbdBrightnessUp exec sudo brightnessctl --device="smc::kbd_backlight" set +10%
 
+    # Special keys to control media playback via playerctl
+    bindsym XF86AudioPlay exec playerctl play-pause
+    bindsym XF86AudioNext exec playerctl next
+    bindsym XF86AudioPrev exec playerctl previous
+
     # Special key to take a screenshot with grim
     bindsym $mod+p exec grim
     # bindsym Print exec grim
@@ -286,7 +291,7 @@ smart_gaps off
 
 default_border pixel 2
 
-exec swaybg -i ~/Bilder/wallpaper/neo_chicks_scaled.png -m fill
+exec swaybg -i ~/Bilder/wallpaper/cyber_birds.png -m fill
 
 exec swaync
 bindsym $mod+Shift+n exec swaync-client -t -sw
