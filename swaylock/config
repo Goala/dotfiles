@@ -1,0 +1,62 @@
+########################################
+# Swaylock – Cyberpunk Neon Theme
+# Version: Neon Green Segments
+########################################
+
+##### Hintergrund #####
+color=0E0B16FF
+
+##### Indikator – Innenbereich #####
+inside-color=1B1630B0
+inside-clear-color=1B1630B0
+inside-ver-color=1B1630B0
+inside-wrong-color=1B1630B0
+inside-caps-lock-color=1B1630B0
+
+##### Ring – Idle / Standard (Neon Blue) #####
+ring-color=4FC3FFCC
+ring-clear-color=4FC3FFCC
+# ring-ver-color=4FC3FFFF
+ring-ver-color=B96CFF
+
+##### Ring – Fehler / Caps #####
+# ring-wrong-color=FF4FD8FF
+ring-wrong-color=FF3B3B
+ring-caps-lock-color=B96CFFFF
+
+##### Linien & Segmente (Neon Green) #####
+# line-color=4DFF88CC
+# line-clear-color=00000000
+# line-ver-color=4DFF88FF
+# line-wrong-color=FF4FD8FF
+line-caps-lock-color=B96CFFFF
+separator-color=4DFF88FF
+
+##### Key-Highlights (Segmente beim Tippen) #####
+key-hl-color=4DFF88FF
+bs-hl-color=4DFF88FF
+caps-lock-key-hl-color=B96CFFFF
+caps-lock-bs-hl-color=B96CFFFF
+
+##### Text #####
+text-color=E6E2F2FF
+text-ver-color=B96CFF
+text-clear-color=4FC3FFFF
+text-wrong-color=FF3B3B
+text-caps-lock-color=B96CFFFF
+
+##### Layout Indicator #####
+layout-bg-color=241E3DCC
+layout-border-color=4FC3FFFF
+layout-text-color=E6E2F2FF
+
+##### Geometrie & Schrift #####
+indicator-radius=90
+indicator-thickness=10
+font="JetBrainsMono Nerd Font"
+font-size=24
+
+##### Verhalten #####
+indicator-idle-visible
+hide-keyboard-layout
+ignore-empty-password
