@@ -79,12 +79,16 @@ tooltip label {
 #backlight,
 #custom-notification,
 #custom-power,
+#system-block,
 #custom-media {
-  /* background: #1B1630; */
   background: @bg-module;
-  padding: 4px 8px;
+  padding: 4px 4px;
   margin: 2px 2px;
   color: @text-muted;
+}
+
+#power-profiles-daemon {
+  padding-right: 8px;
 }
 
 /* Hover (subtle, no neon) */
@@ -96,6 +100,7 @@ tooltip label {
 #power-profiles-daemon:hover,
 #custom-notification:hover,
 #custom-power:hover,
+#system-block:hover,
 #backlight:hover {
   background: @bg-hover;
 }
@@ -104,7 +109,6 @@ tooltip label {
 #workspaces {
   background: @bg-module;
   border-radius: 4px;
-  /* padding: 4px 6px; */
   margin: 2px;
 }
 
@@ -211,15 +215,6 @@ tooltip label {
   color: @neon-pink;
 }
 
-#system-block {
-  background: @bg-system-block;
-  border-radius: 4px;
-  padding: 0 8px;
-}
-
-#system-block:hover {
-  background: @bg-system-block-hover;
-}
 /* ---------- Tray ---------- */
 #tray {
   padding-right: 8px;
@@ -227,7 +222,8 @@ tooltip label {
 
 #custom-power {
   color: @accent-red;
-  padding: 0 8px;
+  /* padding: 0 8px; */
+  font-size: 14px;
 }
 
 /* ---------- Power Profiles Daemon ---------- */
