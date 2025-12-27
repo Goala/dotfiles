@@ -185,8 +185,39 @@ tooltip label {
 }
 
 /* ---------- Battery ---------- */
+@keyframes battery-pulse {
+  0% {
+    color: @neon-green;
+  }
+  25% {
+    color: @neon-green;
+    text-shadow:
+      0 0 1px @neon-green,
+      0 0 2px @neon-green;
+  }
+  50% {
+    color: @neon-green;
+    text-shadow:
+      0 0 2px @neon-green,
+      0 0 4px @neon-green;
+  }
+  75% {
+    color: @neon-green;
+    text-shadow:
+      0 0 1px @neon-green,
+      0 0 2px @neon-green;
+  }
+  100% {
+    color: @neon-green;
+  }
+}
+
 #battery {
   color: @neon-green;
+}
+
+#battery.charging {
+  animation: battery-pulse 2s ease-in-out infinite;
 }
 
 #battery.warning {
