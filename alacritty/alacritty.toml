@@ -1,0 +1,6 @@
+[font]
+normal = { family = "0xProto Nerd Font", style = "Regular" }
+
+[window]
+opacity = 0.95
+
