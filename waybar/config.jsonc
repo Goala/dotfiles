@@ -2,7 +2,7 @@
 {
   // "layer": "top", // Waybar at top layer
   // "position": "bottom", // Waybar position (top|bottom|left|right)
-  "height": 30, // Waybar height (to be removed for auto height)
+  // "height": 30, // Waybar height (to be removed for auto height)
   // "width": 1280, // Waybar width
   // "spacing": 8, // Gaps between modules (4px)
   // Choose the order of the modules
@@ -30,7 +30,6 @@
     "network",
     "battery",
     "battery#bat2",
-    "custom/power",
   ],
   // Modules configuration
   "sway/workspaces": {
@@ -218,11 +217,6 @@
     "escape": true,
     "exec": "/usr/share/waybar/custom_modules/mediaplayer.py 2> /dev/null", // Script in resources folder
     // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
-  },
-  "custom/power": {
-    "format": "⏻",
-    "tooltip": false,
-    "on-click": "wlogout --protocol layer-shell",
   },
   "custom/notification": {
     "tooltip": true,

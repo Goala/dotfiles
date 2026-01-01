@@ -43,7 +43,7 @@ Ziel: ruhig, kontrastreich, wallpaper-freundlich
 * {
   border: none;
   border-radius: 4px;
-  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-family: "0xProto Nerd Font", monospace;
   font-size: 13px;
   min-height: 0;
 }
@@ -78,7 +78,6 @@ tooltip label {
 #power-profiles-daemon,
 #backlight,
 #custom-notification,
-#custom-power,
 #system-block,
 #custom-media {
   background: @bg-module;
@@ -99,7 +98,6 @@ tooltip label {
 #tray:hover,
 #power-profiles-daemon:hover,
 #custom-notification:hover,
-#custom-power:hover,
 #system-block:hover,
 #backlight:hover {
   background: @bg-hover;
@@ -249,12 +247,6 @@ tooltip label {
 /* ---------- Tray ---------- */
 #tray {
   padding-right: 8px;
-}
-
-#custom-power {
-  color: @accent-red;
-  /* padding: 0 8px; */
-  font-size: 14px;
 }
 
 /* ---------- Power Profiles Daemon ---------- */
