@@ -1,0 +1,67 @@
+/* =========================================================
+   Wofi Cyberpunk Neon Style (Matching Waybar)
+   ========================================================= */
+
+window {
+    margin: 0px;
+    padding: 10px;
+    /* Hintergrund: rgba(14, 11, 22, 0.9) für bessere Lesbarkeit als die Bar */
+    background-color: rgba(14, 11, 22, 0.9);
+    border: 2px solid #241E3D; /* @border-tooltip */
+    border-radius: 8px;
+    font-family: "0xProto Nerd Font", monospace;
+    font-size: 14px;
+}
+
+/* Suchfeld / Input */
+#input {
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: rgba(27, 22, 48, 0.7); /* @bg-module */
+    color: #E6E2F2; /* @text-primary */
+    outline: none;
+}
+
+/* Innerer Container */
+#inner-box {
+    margin: 5px;
+    background-color: transparent;
+}
+
+/* Die einzelnen Einträge */
+#entry {
+    padding: 8px;
+    margin: 2px 0px;
+    border-radius: 4px;
+    color: #9B96B5; /* @text-muted */
+}
+
+/* Ausgewählter Eintrag */
+#entry:selected {
+    background-color: rgba(36, 30, 61, 0.9); /* @bg-hover */
+}
+
+/* Text des ausgewählten Eintrags */
+#entry:selected #text {
+    color: #4FC3FF; /* @neon-blue - passend zum focused workspace */
+    font-weight: bold;
+}
+
+/* Icons (falls aktiv) */
+#img {
+    margin-right: 15px;
+    width: 24px;
+    height: 24px;
+}
+
+/* Scrollbar (subtil) */
+#scroll {
+    margin-top: 5px;
+}
+
+/* Prompt verstecken (da du --no-actions nutzt) */
+#prompt {
+    display: none;
+}

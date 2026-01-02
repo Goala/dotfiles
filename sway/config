@@ -22,7 +22,8 @@ set $right l
 #set $term foot
 set $term alacritty
 # Your preferred application launcher
-set $menu wmenu-run
+# set $menu wmenu-run
+set $menu wofi --show drun --allow-images --no-actions
 
 include /etc/sway/config-vars.d/*
 

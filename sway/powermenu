@@ -1,10 +1,15 @@
 #!/bin/bash
 
 # Definition der Optionen
-OPTS="Sperren\nAbmelden\nSchlafen\nNeustarten\nAusschalten"
+OPTS="  Sperren\n  Abmelden\n  Schlafen\n  Neustarten\n  Ausschalten"
 
-# wmenu aufrufen und Auswahl speichern
-PICK=$(echo -e "$OPTS" | wmenu -p "System:")
+PICK=$(echo -e "$OPTS" | wofi --dmenu \
+    --no-actions \
+    --width 350 \
+    --height 280 \
+    --cache-file /dev/null \
+    --style ~/.config/wofi/style.css \
+    --prompt "System")
 
 case $PICK in
     Sperren)
