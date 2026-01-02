@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# Definition der Optionen
+OPTS="Sperren\nAbmelden\nSchlafen\nNeustarten\nAusschalten"
+
+# wmenu aufrufen und Auswahl speichern
+PICK=$(echo -e "$OPTS" | wmenu -p "System:")
+
+case $PICK in
+    Sperren)
+        swaylock -f
+        ;;
+    Abmelden)
+        swaymsg exit
+        ;;
+    Schlafen)
+        systemctl suspend
+        ;;
+    Neustarten)
+        systemctl reboot --no-wall
+        ;;
+    Ausschalten)
+        systemctl poweroff --no-wall
+        ;;
+esac
