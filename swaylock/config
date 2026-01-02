@@ -1,10 +1,9 @@
 ########################################
-# Swaylock – Cyberpunk Neon Theme
-# Version: Neon Green Segments
+# Swaylock – Cyberpunk Neon (Refined)
 ########################################
 
 ##### Hintergrund #####
-color=0E0B16FF
+color=0E0B16
 
 ##### Indikator – Innenbereich #####
 inside-color=1B1630B0
@@ -13,50 +12,49 @@ inside-ver-color=1B1630B0
 inside-wrong-color=1B1630B0
 inside-caps-lock-color=1B1630B0
 
-##### Ring – Idle / Standard (Neon Blue) #####
+##### Ring – Status #####
+# Normal: Neon Blue (Aktiv-Farbe deiner Waybar)
 ring-color=4FC3FFCC
-ring-clear-color=4FC3FFCC
-# ring-ver-color=4FC3FFFF
+# Clear/Backspace: Neon Cyan (wie dein Network-Modul)
+ring-clear-color=3FFFD8FF
+# Verifying: Neon Purple (wie deine Uhr)
 ring-ver-color=B96CFF
-
-##### Ring – Fehler / Caps #####
-# ring-wrong-color=FF4FD8FF
+# Wrong: Neon Red (Kritischer Fehler)
 ring-wrong-color=FF3B3B
+# Caps Lock: Neon Purple
 ring-caps-lock-color=B96CFFFF
 
-##### Linien & Segmente (Neon Green) #####
-# line-color=4DFF88CC
-# line-clear-color=00000000
-# line-ver-color=4DFF88FF
-# line-wrong-color=FF4FD8FF
-line-caps-lock-color=B96CFFFF
-separator-color=4DFF88FF
-
 ##### Key-Highlights (Segmente beim Tippen) #####
+# Neon Green (Interaktions-Farbe)
 key-hl-color=4DFF88FF
-bs-hl-color=4DFF88FF
-caps-lock-key-hl-color=B96CFFFF
-caps-lock-bs-hl-color=B96CFFFF
+bs-hl-color=FF4FD8FF
+caps-lock-key-hl-color=4DFF88FF
+caps-lock-bs-hl-color=FF4FD8FF
 
 ##### Text #####
 text-color=E6E2F2FF
 text-ver-color=B96CFF
-text-clear-color=4FC3FFFF
+text-clear-color=3FFFD8FF
 text-wrong-color=FF3B3B
 text-caps-lock-color=B96CFFFF
 
-##### Layout Indicator #####
-layout-bg-color=241E3DCC
-layout-border-color=4FC3FFFF
-layout-text-color=E6E2F2FF
+##### Linien & Separatoren #####
+line-color=00000000
+line-clear-color=00000000
+line-ver-color=00000000
+line-wrong-color=00000000
+line-caps-lock-color=00000000
+
+separator-color=4DFF88FF
 
 ##### Geometrie & Schrift #####
-indicator-radius=90
-indicator-thickness=10
-font="JetBrainsMono Nerd Font"
-font-size=24
+indicator-radius=100
+indicator-thickness=12
+font="0xProto Nerd Font"
+font-size=22
 
 ##### Verhalten #####
 indicator-idle-visible
 hide-keyboard-layout
 ignore-empty-password
+show-failed-attempts
