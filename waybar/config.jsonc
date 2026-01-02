@@ -158,7 +158,7 @@
     "format-alt": "{time} {icon}",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
-    "format-icons": ["", "", "", "", ""],
+    "format-icons": [" ", " ", " ", " ", " "],
   },
   "battery#bat2": {
     "bat": "BAT2",
@@ -170,14 +170,14 @@
     "format-icons": {
       "default": "",
       "performance": "",
-      "balanced": "",
-      "power-saver": "",
+      "balanced": " ",
+      "power-saver": " ",
     },
   },
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
     // "format-wifi": "{essid} ({signalStrength}%) ",
-    "format-wifi": "",
+    "format-wifi": " ",
     "format-ethernet": "{ipaddr}/{cidr} ",
     "tooltip-format": "{ifname} via {gwaddr} ",
     "format-linked": "{ifname} (No IP) ",
@@ -194,7 +194,7 @@
     "format-bluetooth-muted": " {icon} {format_source}",
     "format-muted": " {format_source}",
     "format-source": "{volume}% ",
-    "format-source-muted": "",
+    "format-source-muted": " ",
     "format-icons": {
       "headphone": "",
       "hands-free": "",
@@ -220,7 +220,7 @@
   },
   "custom/notification": {
     "tooltip": true,
-    "format": "<span size='12pt'>{icon}</span>",
+    "format": "{icon}",
     "format-icons": {
       "notification": "󱅫",
       "none": "󰂜",

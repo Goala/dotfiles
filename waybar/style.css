@@ -39,6 +39,15 @@ Ziel: ruhig, kontrastreich, wallpaper-freundlich
 
 @define-color primary-color #007bff;
 
+/* Glow Colors */
+@define-color glow-blue rgba(79, 195, 255, 0.55);
+@define-color glow-purple rgba(185, 108, 255, 0.55);
+@define-color glow-cyan rgba(63, 255, 216, 0.5);
+@define-color glow-green rgba(77, 255, 136, 0.5);
+@define-color glow-pink rgba(255, 79, 216, 0.6);
+@define-color glow-amber rgba(255, 216, 77, 0.5);
+@define-color glow-red rgba(255, 59, 59, 0.6);
+
 /* ---------- Global ---------- */
 * {
   border: none;
@@ -81,13 +90,6 @@ tooltip label {
 #system-block,
 #custom-media {
   background: @bg-module;
-  padding: 4px 4px;
-  margin: 2px 2px;
-  color: @text-muted;
-}
-
-#power-profiles-daemon {
-  padding-right: 8px;
 }
 
 /* Hover (subtle, no neon) */
@@ -124,8 +126,9 @@ tooltip label {
 
 #workspaces button.focused {
   color: @neon-blue;
-  box-shadow: inset 0 -2px @neon-blue;
-  animation: none;
+  background: rgba(79, 195, 255, 0.1);
+  box-shadow: inset 0 -3px @neon-blue;
+  text-shadow: 0 0 8px @neon-blue;
 }
 
 #workspaces button:hover {
@@ -150,6 +153,7 @@ tooltip label {
 #workspaces button.urgent {
   color: @urgent-pulse-color;
   box-shadow: inset 0 2px 0 @urgent-pulse-shadow;
+  background: rgba(255, 79, 216, 0.1);
   animation: urgent-pulse 1.6s ease-in-out infinite;
   animation-fill-mode: both;
 }
@@ -162,20 +166,32 @@ tooltip label {
 #clock {
   color: @neon-purple;
   font-weight: 600;
+  background: transparent;
+  text-shadow: 0 0 6px @glow-purple;
 }
 
 /* ---------- Network ---------- */
 #network {
   color: @neon-cyan;
+  font-weight: 600;
+  background: transparent;
+  /* margin-right: 4px; */
+  padding: 0 8px;
+  text-shadow: 0 0 5px @glow-cyan;
 }
 
 #network.disconnected {
   color: @neon-pink;
+  text-shadow: 0 0 5px @glow-pink;
 }
 
 /* ---------- Audio ---------- */
 #pulseaudio {
   color: @neon-blue;
+  font-weight: 600;
+  background: transparent;
+  padding: 0 12px;
+  text-shadow: 0 0 5px @glow-blue;
 }
 
 #pulseaudio.muted {
@@ -212,6 +228,10 @@ tooltip label {
 
 #battery {
   color: @neon-green;
+  padding: 0 8px;
+  /* margin-right: 4px; */
+  font-weight: 600;
+  text-shadow: 0 0 5px @glow-green;
 }
 
 #battery.charging {
@@ -220,53 +240,91 @@ tooltip label {
 
 #battery.warning {
   color: @accent-warning;
+  font-weight: 600;
+  text-shadow: 0 0 5px @glow-amber;
 }
 
 #battery.critical {
   color: @neon-pink;
+  font-weight: 600;
+  text-shadow: 0 0 5px @glow-pink;
 }
 
 /* ---------- System ---------- */
 #cpu {
   color: @neon-blue;
+  font-weight: 600;
+  text-shadow: 0 0 5px @glow-blue;
 }
 
 #memory {
   color: @neon-purple;
+  font-weight: 600;
+  text-shadow: 0 0 5px @glow-purple;
   margin: 0 8px;
 }
 
 #temperature {
   color: @neon-cyan;
+  font-weight: 600;
+  text-shadow: 0 0 5px @glow-cyan;
 }
 
 #temperature.critical {
   color: @neon-pink;
+  text-shadow: 0 0 5px @glow-pink;
+}
+
+#system-block {
+  /* background: @bg-system-block; */
+  padding: 0 8px;
+  margin-right: 4px;
 }
 
 /* ---------- Tray ---------- */
 #tray {
-  padding-right: 8px;
+  padding: 8px;
 }
 
 /* ---------- Power Profiles Daemon ---------- */
 #power-profiles-daemon {
   color: @neon-cyan;
+  text-shadow: 0 0 5px @glow-cyan;
+  padding: 0 12px;
   font-weight: 600;
 }
 
 #power-profiles-daemon.performance {
   color: @neon-pink;
+  text-shadow: 0 0 5px @glow-pink;
 }
 
 #power-profiles-daemon.balanced {
   color: @neon-blue;
+  padding: 0 8px;
+  text-shadow: 0 0 5px @glow-blue;
 }
 
 #power-profiles-daemon.power-saver {
   color: @neon-green;
+  padding: 0 8px;
+  text-shadow: 0 0 5px @glow-green;
 }
 
 #power-profiles-daemon:hover {
   background: @bg-hover;
+}
+
+#custom-notification {
+  color: @neon-blue;
+  padding: 0 12px;
+  /* margin: 4px 3px; */
+  font-size: 14px;
+  text-shadow: 0 0 5px @glow-blue;
+}
+
+/* Wenn keine Benachrichtigungen da sind (Muted Look) */
+#custom-notification.none {
+  color: @text-muted;
+  text-shadow: none;
 }
