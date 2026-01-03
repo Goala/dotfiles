@@ -236,30 +236,15 @@ tooltip label {
 }
 
 /* ---------- Battery ---------- */
-@keyframes battery-pulse {
+@keyframes battery-fade {
   0% {
-    color: @neon-green;
-  }
-  25% {
-    color: @neon-green;
-    text-shadow:
-      0 0 1px @neon-green,
-      0 0 2px @neon-green;
+    opacity: 0.6;
   }
   50% {
-    color: @neon-green;
-    text-shadow:
-      0 0 2px @neon-green,
-      0 0 4px @neon-green;
-  }
-  75% {
-    color: @neon-green;
-    text-shadow:
-      0 0 1px @neon-green,
-      0 0 2px @neon-green;
+    opacity: 1;
   }
   100% {
-    color: @neon-green;
+    opacity: 0.6;
   }
 }
 
@@ -281,7 +266,8 @@ tooltip label {
 }
 
 #battery.charging {
-  animation: battery-pulse 2s ease-in-out infinite;
+  text-shadow: 0 0 6px @glow-green;
+  animation: battery-fade 2s ease-in-out infinite;
 }
 
 #battery.warning {
