@@ -45,11 +45,9 @@ line-ver-color=00000000
 line-wrong-color=00000000
 line-caps-lock-color=00000000
 
-separator-color=4DFF88FF
-
 ##### Geometrie & Schrift #####
 indicator-radius=100
-indicator-thickness=12
+indicator-thickness=10
 font="0xProto Nerd Font"
 font-size=22
 
