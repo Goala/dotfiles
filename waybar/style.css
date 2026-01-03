@@ -101,6 +101,7 @@ tooltip label {
 #custom-notification,
 #system-block,
 #custom-media {
+  min-width: 18px;
   background: @bg-module;
 }
 
@@ -403,6 +404,14 @@ tooltip label {
   padding: 0 12px;
   font-size: 15px;
   text-shadow: 0 0 5px @glow-blue;
+  box-shadow: inset 3px 0 0 @glow-blue;
+  transition: all 0.2s linear;
+}
+
+#custom-notification:hover {
+  box-shadow:
+    inset 4px 0 0 @glow-blue,
+    inset 0 0 10px @box-shadow-blue;
 }
 
 #custom-notification.none {
