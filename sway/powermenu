@@ -11,7 +11,9 @@ PICK=$(echo -e "$OPTS" | wofi --dmenu \
     --style ~/.config/wofi/style.css \
     --prompt "System")
 
-case $PICK in
+ACTION=$(echo "$PICK" | awk '{print $NF}')
+
+case $ACTION in
     Sperren)
         swaylock -f
         ;;
