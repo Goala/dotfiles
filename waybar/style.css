@@ -48,13 +48,25 @@ Ziel: ruhig, kontrastreich, wallpaper-freundlich
 @define-color glow-amber rgba(255, 216, 77, 0.5);
 @define-color glow-red rgba(255, 59, 59, 0.6);
 
+/* Box Shadow */
+@define-color box-shadow-blue rgba(79, 195, 255, 0.2);
+@define-color box-shadow-purple rgba(185, 108, 255, 0.2);
+@define-color box-shadow-cyan rgba(63, 255, 216, 0.2);
+@define-color box-shadow-green rgba(77, 255, 136, 0.2);
+@define-color box-shadow-pink rgba(255, 79, 216, 0.2);
+@define-color box-shadow-amber rgba(255, 216, 77, 0.2);
+@define-color box-shadow-red rgba(255, 59, 59, 0.2);
+
 /* ---------- Global ---------- */
 * {
   border: none;
   border-radius: 4px;
   font-family: "0xProto Nerd Font", monospace;
-  font-size: 13px;
+  font-size: 14px;
   min-height: 0;
+  font-weight: 600;
+  transition: none;
+  text-shadow: none;
 }
 
 /* ---------- Bar ---------- */
@@ -165,33 +177,57 @@ tooltip label {
 /* ---------- Clock ---------- */
 #clock {
   color: @neon-purple;
-  font-weight: 600;
   background: transparent;
   text-shadow: 0 0 6px @glow-purple;
+  padding: 0 12px;
 }
 
 /* ---------- Network ---------- */
 #network {
   color: @neon-cyan;
-  font-weight: 600;
   background: transparent;
-  /* margin-right: 4px; */
   padding: 0 8px;
+  padding-left: 12px;
   text-shadow: 0 0 5px @glow-cyan;
+  box-shadow: inset 3px 0 0 @glow-cyan;
+  transition: all 0.2s linear;
+}
+
+#network:hover {
+  padding-left: 12.1px;
+  box-shadow:
+    inset 4px 0 0 @glow-cyan,
+    inset 0 0 10px @box-shadow-cyan;
 }
 
 #network.disconnected {
   color: @neon-pink;
   text-shadow: 0 0 5px @glow-pink;
+  box-shadow: inset 3px 0 0 @glow-pink;
+}
+
+#network.disconnected:hover {
+  padding-left: 12.1px;
+  box-shadow:
+    inset 4px 0 0 @glow-pink,
+    inset 0 0 10px @box-shadow-pink;
 }
 
 /* ---------- Audio ---------- */
 #pulseaudio {
   color: @neon-blue;
-  font-weight: 600;
   background: transparent;
   padding: 0 12px;
   text-shadow: 0 0 5px @glow-blue;
+  box-shadow: inset 3px 0 0 @glow-blue;
+  transition: all 0.2s linear;
+}
+
+#pulseaudio:hover {
+  padding-right: 12.1px;
+  box-shadow:
+    inset 4px 0 0 @glow-blue,
+    inset 0 0 10px @box-shadow-blue;
 }
 
 #pulseaudio.muted {
@@ -228,10 +264,19 @@ tooltip label {
 
 #battery {
   color: @neon-green;
-  padding: 0 8px;
-  /* margin-right: 4px; */
-  font-weight: 600;
+  background: transparent;
+  padding: 0 8px 0 12px;
   text-shadow: 0 0 5px @glow-green;
+  box-shadow: inset 3px 0 0 @glow-green;
+  transition: all 0.2s linear;
+}
+
+#battery:hover {
+  background: @bg-hover;
+  box-shadow:
+    inset 4px 0 0 @glow-green,
+    inset 0 0 10px @box-shadow-green;
+  padding-left: 12.1px;
 }
 
 #battery.charging {
@@ -240,33 +285,42 @@ tooltip label {
 
 #battery.warning {
   color: @accent-warning;
-  font-weight: 600;
   text-shadow: 0 0 5px @glow-amber;
+  box-shadow: inset 3px 0 0 @glow-amber;
+}
+
+#battery.warning:hover {
+  box-shadow:
+    inset 4px 0 0 @glow-amber,
+    inset 0 0 10px @box-shadow-amber;
 }
 
 #battery.critical {
   color: @neon-pink;
-  font-weight: 600;
   text-shadow: 0 0 5px @glow-pink;
+  box-shadow: inset 3px 0 0 @box-shadow-pink;
+}
+
+#battery.critical:hover {
+  box-shadow:
+    inset 4px 0 0 @glow-pink,
+    inset 0 0 10px @box-shadow-pink;
 }
 
 /* ---------- System ---------- */
 #cpu {
   color: @neon-blue;
-  font-weight: 600;
   text-shadow: 0 0 5px @glow-blue;
 }
 
 #memory {
   color: @neon-purple;
-  font-weight: 600;
   text-shadow: 0 0 5px @glow-purple;
   margin: 0 8px;
 }
 
 #temperature {
   color: @neon-cyan;
-  font-weight: 600;
   text-shadow: 0 0 5px @glow-cyan;
 }
 
@@ -276,39 +330,68 @@ tooltip label {
 }
 
 #system-block {
-  /* background: @bg-system-block; */
-  padding: 0 8px;
-  margin-right: 4px;
+  background: transparent;
+  padding: 0 8px 0 12px;
+  transition: all 0.2s linear;
+  box-shadow: inset 3px 0 0 @glow-cyan;
+}
+
+#system-block:hover {
+  box-shadow:
+    inset 4px 0 0 @glow-blue,
+    inset 0 0 10px @box-shadow-blue;
 }
 
 /* ---------- Tray ---------- */
 #tray {
-  padding: 8px;
+  padding: 0 8px;
 }
 
 /* ---------- Power Profiles Daemon ---------- */
 #power-profiles-daemon {
   color: @neon-cyan;
-  text-shadow: 0 0 5px @glow-cyan;
-  padding: 0 12px;
-  font-weight: 600;
+  background: transparent;
+  transition: all 0.2s linear;
+  padding: 0 8px 0 12px;
 }
 
 #power-profiles-daemon.performance {
   color: @neon-pink;
   text-shadow: 0 0 5px @glow-pink;
+  box-shadow: inset 3px 0 0 @glow-pink;
+}
+
+#power-profiles-daemon.performance:hover {
+  padding-right: 8.1px;
+  box-shadow:
+    inset 4px 0 0 @glow-pink,
+    inset 0 0 10px @box-shadow-pink;
 }
 
 #power-profiles-daemon.balanced {
   color: @neon-blue;
-  padding: 0 8px;
   text-shadow: 0 0 5px @glow-blue;
+  box-shadow: inset 3px 0 0 @glow-blue;
+}
+
+#power-profiles-daemon.balanced:hover {
+  padding-right: 8.1px;
+  box-shadow:
+    inset 4px 0 0 @glow-blue,
+    inset 0 0 10px @box-shadow-blue;
 }
 
 #power-profiles-daemon.power-saver {
   color: @neon-green;
-  padding: 0 8px;
   text-shadow: 0 0 5px @glow-green;
+  box-shadow: inset 3px 0 0 @glow-green;
+}
+
+#power-profiles-daemon.power-saver:hover {
+  padding-right: 8.1px;
+  box-shadow:
+    inset 4px 0 0 @glow-green,
+    inset 0 0 10px @box-shadow-green;
 }
 
 #power-profiles-daemon:hover {
@@ -318,12 +401,10 @@ tooltip label {
 #custom-notification {
   color: @neon-blue;
   padding: 0 12px;
-  /* margin: 4px 3px; */
-  font-size: 14px;
+  font-size: 15px;
   text-shadow: 0 0 5px @glow-blue;
 }
 
-/* Wenn keine Benachrichtigungen da sind (Muted Look) */
 #custom-notification.none {
   color: @text-muted;
   text-shadow: none;

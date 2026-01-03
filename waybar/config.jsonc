@@ -113,7 +113,7 @@
   },
   "tray": {
     // "icon-size": 21,
-    // "spacing": 10
+    "spacing": 10
   },
   "clock": {
     // "timezone": "America/New_York",
@@ -168,8 +168,8 @@
     "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
     "tooltip": true,
     "format-icons": {
-      "default": "",
-      "performance": "",
+      "default": " ",
+      "performance": " ",
       "balanced": " ",
       "power-saver": " ",
     },
@@ -182,7 +182,7 @@
     "tooltip-format": "{ifname} via {gwaddr} ",
     "format-linked": "{ifname} (No IP) ",
     // "format-disconnected": "Disconnected ⚠",
-    "format-disconnected": "",
+    "format-disconnected": " ",
     // "on-click": "exec swaymsg \"exec alacritty -e impala\""
     "on-click": "exec swaymsg \"exec alacritty --class impala_float -e impala\"",
     // "format-alt": "{ifname}: {ipaddr}/{cidr}"
