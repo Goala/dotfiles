@@ -1,0 +1,151 @@
+/* ---------- 1. Variablen & Basis ---------- */
+@define-color bg-center rgba(14, 11, 22, 0.9);
+@define-color bg-card rgba(27, 22, 48, 0.8);
+@define-color bg-hover rgba(36, 30, 61, 0.9);
+@define-color neon-blue #4fc3ff;
+@define-color neon-purple #b96cff;
+@define-color neon-pink #ff4fd8;
+@define-color text-main #e6e2f2;
+
+/* ---------- 2. Hauptfenster (Control Center) ---------- */
+.control-center {
+  background: @bg-center;
+  border: 2px solid @neon-purple;
+  border-radius: 12px;
+  margin: 10px;
+  padding: 10px;
+  box-shadow: 0 0 15px rgba(185, 108, 255, 0.3);
+}
+
+.control-center-title {
+  color: @neon-blue;
+  font-size: 22px;
+  margin: 15px;
+  text-shadow: 0 0 8px rgba(79, 195, 255, 0.6);
+}
+
+/* ---------- 3. Benachrichtigungs-Karten ---------- */
+.notification {
+  background: @bg-card;
+  border-radius: 8px;
+  margin: 8px;
+  border: 1px solid rgba(185, 108, 255, 0.1);
+  box-shadow: inset 4px 0 0 @neon-blue;
+  padding: 12px 0 12px 12px;
+  transition: all 0.2s ease-in-out;
+}
+
+.notification:hover {
+  background: @bg-hover;
+  border: 1px solid @neon-blue;
+  box-shadow:
+    inset 6px 0 0 @neon-blue,
+    0 0 12px rgba(79, 195, 255, 0.3);
+}
+
+/* Spezialzustand: Kritisch */
+.notification.critical {
+  box-shadow: inset 5px 0 0 @neon-pink;
+}
+
+/* Das Padding für den Inhalt (Text & Icons) */
+.notification-default-action {
+  padding: 12px 15px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+}
+
+.notification-default-action:active {
+  background: rgba(47, 39, 79, 0.6);
+}
+
+/* Die Inhalts-Struktur */
+.notification-content {
+  background: transparent;
+  padding: 2px;
+}
+
+.notification-row {
+  outline: none;
+  margin: 0;
+}
+
+/* ---------- 4. Buttons innerhalb der Nachricht ---------- */
+.notification-action {
+  background: rgba(185, 108, 255, 0.1);
+  border: 1px solid rgba(185, 108, 255, 0.3);
+  border-radius: 6px;
+  color: @text-main;
+  margin: 8px 4px;
+  padding: 4px;
+}
+
+.notification-action:hover {
+  background: rgba(185, 108, 255, 0.2);
+  border: 1px solid @neon-purple;
+  box-shadow: 0 0 5px rgba(185, 108, 255, 0.4);
+}
+
+/* ---------- 5. Widgets & Switches ---------- */
+
+/* Do Not Disturb */
+.widget-dnd {
+  margin: 10px;
+  color: @neon-blue;
+}
+
+.widget-dnd > switch {
+  background: @bg-card;
+  border: 1px solid @neon-blue;
+  border-radius: 20px;
+  margin: 4px;
+}
+
+.widget-dnd > switch:checked {
+  background: @neon-blue;
+}
+
+.widget-dnd > switch slider {
+  background: @text-main;
+  border-radius: 20px;
+  margin: 2px;
+}
+
+/* ---------- 6. Quick Reply (Eingabefelder) ---------- */
+
+/* Das Textfeld zum Tippen */
+.notification-reply-entry {
+  background: rgba(14, 11, 22, 0.8);
+  color: @text-main;
+  border: 1px solid @neon-purple;
+  border-radius: 6px;
+  margin: 5px;
+  padding: 5px;
+}
+
+.notification-reply-entry:focus {
+  border: 1px solid @neon-blue;
+  box-shadow: 0 0 5px rgba(79, 195, 255, 0.4);
+}
+
+/* Der "Senden" Button neben dem Textfeld */
+.notification-reply-button {
+  background: @bg-card;
+  color: @neon-blue;
+  border: 1px solid @neon-blue;
+  border-radius: 6px;
+  margin: 5px;
+  padding: 4px 8px;
+}
+
+.notification-reply-button:hover {
+  background: @neon-blue;
+  color: @bg-center;
+  box-shadow: 0 0 10px @neon-blue;
+}
+
+/* Falls noch graue Standard-Labels auftauchen */
+.notification-reply-button label {
+  color: inherit;
+}
