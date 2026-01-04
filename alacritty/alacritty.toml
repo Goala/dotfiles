@@ -1,6 +1,42 @@
 [font]
 normal = { family = "0xProto Nerd Font", style = "Regular" }
+size = 11.0
 
 [window]
 opacity = 0.95
+# Padding sorgt dafür, dass der Text nicht am Rand klebt
+# 10px passt perfekt zu deinen 5px Gaps in Sway
+padding = { x = 10, y = 10 }
+dynamic_title = true
 
+[colors.primary]
+background = '#0e0b16' # Dein bg_deep aus Starship
+foreground = '#e6e2f2' # Dein text_main
+
+[colors.cursor]
+text = '#0e0b16'
+cursor = '#ffb300'    # Dein Amber als Cursor!
+
+[colors.normal]
+black   = '#1b1630'   # bg_dark
+red     = '#ff4fd8'   # neon_pink
+green   = '#4fc3ff'   # neon_blue (als grün gemappt für Erfolg)
+yellow  = '#ffb300'   # amber
+blue    = '#b96cff'   # neon_purple
+magenta = '#ff4fd8'   # neon_pink
+cyan    = '#4fc3ff'   # neon_blue
+white   = '#e6e2f2'   # text_fg
+
+[colors.bright]
+black   = '#665c54'
+red     = '#ff4fd8'
+green   = '#4fc3ff'
+yellow  = '#ffb300'
+blue    = '#b96cff'
+magenta = '#ff4fd8'
+cyan    = '#4fc3ff'
+white   = '#fbf1c7'
+
+[selection]
+semantic_escape_chars = ",.:;!|\\\"'()[]{}<>\t"
+save_to_clipboard = true
