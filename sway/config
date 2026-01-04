@@ -291,11 +291,30 @@ include /etc/sway/config.d/*
 
 #gaps
 
-gaps inner 2
+### 1. Variablen-Definitionen (MÜSSEN oben stehen)
+set $neon_blue   #4fc3ff
+set $neon_purple #b96cff
+set $neon_pink   #ff4fd8
+set $bg_dark     #1b1630
+set $bg_deep     #0e0b16
+set $bg_light    #241e3d
+set $text_main   #e6e2f2
+set $amber       #ffb300
+
+### 2. Gaps & Borders
+gaps inner 5
 gaps outer 2
 smart_gaps off
-
 default_border pixel 2
+default_floating_border pixel 2
+
+### 3. Fenster-Farben (Exakt 5 Werte pro Zeile)
+# Syntax: client.<Klasse> <Border> <BG> <Text> <Indicator> <Child_Border>
+client.focused          $neon_blue  $bg_dark    $text_main  $bg_light  $neon_blue
+client.focused_inactive $bg_dark    $bg_dark    $text_main  $bg_dark    $bg_dark
+client.unfocused        $bg_dark    $bg_dark    $text_main  $bg_dark    $bg_dark
+client.urgent           $neon_pink  $neon_pink  #ffffff     $neon_pink  $neon_pink
+
 
 exec swaybg -i ~/Bilder/wallpaper/cyber_birds_3.png -m fill
 
