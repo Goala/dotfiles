@@ -4,17 +4,31 @@ if vim.fn.has("nvim-0.11") == 1 then
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
+      "ravitemer/codecompanion-history.nvim",
     },
-    event = "VeryLazy", -- Lazy-load for efficiency
-    opts = {
-      -- NOTE: The log_level is in `opts.opts`
-      opts = {
-        log_level = "WARN", -- Use WARN for efficiency; set to DEBUG only for troubleshooting
-      },
-    },
-    config = function(_, opts)
-      -- Place for further scalable custom setup if needed
-      require("codecompanion").setup(opts)
+    event = "VeryLazy",
+    config = function()
+      require("codecompanion").setup({
+        extensions = {
+          history = {
+            enabled = true,
+            opts = {
+              history_file = vim.fn.stdpath("data") .. "/codecompanion_chats.json",
+              max_history = 10,
+            },
+          },
+        },
+        display = {
+          chat = {
+            intro_message = "🧙‍♂️ Lern coden...",
+            show_settings = true,
+            window = {
+              border = "rounded",
+              width = math.min(0.3, 75 / vim.o.columns),
+            },
+          },
+        },
+      })
     end,
   }
 else
