@@ -5,7 +5,7 @@ format = """
 [](neon_blue)$directory[](neon_blue) \
 [](neon_pink)$git_branch$git_status[](neon_pink) \
 [](bg_light)$c$rust$golang$nodejs$php$java$kotlin$haskell$python[](bg_light) \
-[](bg_dark)$docker_context$conda[](bg_dark) \
+[](bg_dark)$docker_context$conda$aws[](bg_dark) \
 [](bg_deep)$time[](bg_deep) \
 $line_break$character"""
 palette = "cyberpunk_neon"
@@ -62,6 +62,12 @@ format = "[$symbol( $version)]($style)"
 symbol = ""
 style = "fg:neon_blue bg:bg_light"
 format = "[$symbol( $version)]($style)"
+
+[aws]
+symbol = ""
+style = "fg:neon_blue bg:bg_dark"
+format = "[$symbol( $profile - $duration)]($style)"
+
 
 [time]
 disabled = false
