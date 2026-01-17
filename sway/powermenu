@@ -9,24 +9,27 @@ PICK=$(echo -e "$OPTS" | wofi --dmenu \
     --height 280 \
     --cache-file /dev/null \
     --style ~/.config/wofi/style.css \
-    --prompt "System")
+    --prompt "System" \
+    --insensitive)
 
-ACTION=$(echo "$PICK" | awk '{print $NF}')
+ACTION=$(echo "$PICK" | awk '{print $NF}' | tr '[:upper:]' '[:lower:]')
+
+echo $ACTION
 
 case $ACTION in
-    Sperren)
+    sperren)
         swaylock -f
         ;;
-    Abmelden)
+    abmelden)
         swaymsg exit
         ;;
-    Schlafen)
+    schlafen)
         systemctl suspend
         ;;
-    Neustarten)
+    neustarten)
         systemctl reboot --no-wall
         ;;
-    Ausschalten)
+    ausschalten)
         systemctl poweroff --no-wall
         ;;
 esac
