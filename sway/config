@@ -262,6 +262,7 @@ bindsym $mod+r mode "resize"
 
     # Special key to take a screenshot with grim
     bindsym $mod+p exec grim
+    bindsym $mod+Shift+p exec grim -g "$(slurp)" - | wl-copy && notify-send "Screenshot" "📸 Bereich in Clipboard kopiert"
     # bindsym Print exec grim
 
 #
