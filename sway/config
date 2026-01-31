@@ -28,7 +28,7 @@ input "type:touchpad" {
 
 output eDP-1 {
     mode 2560x1600@59.972Hz
-    # bg ~/Bilder/wallpaper/cyber_birds_3.png fill
+    bg ~/Wallpapers/cyber_birds.png fill
 }
 
 ### --- Appearance & Gaps --- ###
@@ -58,6 +58,8 @@ exec wl-paste -t text --watch clipman store --no-persist
 
 # Starte btop auf Workspace 10 im Hintergrund
 exec swaymsg "workspace 10; exec alacritty -e btop; workspace 1"
+
+exec /usr/bin/lxqt-policykit-agent
 
 ### --- Window Rules --- ###
 for_window [app_id="impala_float"] floating enable
