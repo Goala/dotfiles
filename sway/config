@@ -5,7 +5,7 @@ set $down Down
 set $up Up
 set $right Right
 set $term alacritty
-set $menu wofi --show drun -i -f --allow-images --no-actions
+set $menu pgrep -x wofi > /dev/null && killall wofi || wofi --show drun -i -f --allow-images --no-actions
 
 # Farben (Neon Theme)
 set $neon_blue   #4fc3ff
