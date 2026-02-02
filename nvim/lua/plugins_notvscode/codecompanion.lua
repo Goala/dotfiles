@@ -21,7 +21,7 @@ if vim.fn.has("nvim-0.11") == 1 then
         display = {
           chat = {
             intro_message = "🧙‍♂️ Lern coden...",
-            show_settings = true,
+            -- show_settings = true,
             window = {
               border = "rounded",
               width = math.min(0.3, 75 / vim.o.columns),
