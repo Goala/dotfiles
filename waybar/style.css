@@ -62,7 +62,7 @@ Ziel: ruhig, kontrastreich, wallpaper-freundlich
   border: none;
   border-radius: 4px;
   font-family: "0xProto Nerd Font", monospace;
-  font-size: 14px;
+  font-size: 12px;
   min-height: 0;
   font-weight: 600;
   transition: none;
@@ -127,7 +127,7 @@ tooltip label {
 
 #workspaces button {
   background: transparent;
-  padding: 4px 6px;
+  padding: 4px 4px;
   margin: 0;
   color: @text-muted;
   border-radius: 4px;
