@@ -22,9 +22,60 @@ return {
 					end,
 				},
 				window = {
-					completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered(),
+					completion = cmp.config.window.bordered({
+						border = "rounded",
+						winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+						-- scrollbar = true,
+						-- side_padding = 1,
+					}),
+					documentation = cmp.config.window.bordered({
+						border = "rounded",
+						winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:Visual,Search:None",
+					}),
 				},
+				-- formatting = {
+				-- 	format = function(entry, vim_item)
+				-- 		-- Kind icons
+				-- 		-- local kind_icons = {
+				-- 		-- 	Text = "󰉿",
+				-- 		-- 	Method = "󰆧",
+				-- 		-- 	Function = "󰊕",
+				-- 		-- 	Constructor = "",
+				-- 		-- 	Field = "󰜢",
+				-- 		-- 	Variable = "󰀫",
+				-- 		-- 	Class = "󰠱",
+				-- 		-- 	Interface = "",
+				-- 		-- 	Module = "",
+				-- 		-- 	Property = "󰜢",
+				-- 		-- 	Unit = "󰑭",
+				-- 		-- 	Value = "󰎠",
+				-- 		-- 	Enum = "",
+				-- 		-- 	Keyword = "󰌋",
+				-- 		-- 	Snippet = "",
+				-- 		-- 	Color = "󰏘",
+				-- 		-- 	File = "󰈙",
+				-- 		-- 	Reference = "󰈇",
+				-- 		-- 	Folder = "󰉋",
+				-- 		-- 	EnumMember = "",
+				-- 		-- 	Constant = "󰏿",
+				-- 		-- 	Struct = "󰙅",
+				-- 		-- 	Event = "",
+				-- 		-- 	Operator = "󰆕",
+				-- 		-- 	TypeParameter = "",
+				-- 		-- }
+				-- 		-- Set the icon
+				-- 		-- vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
+				--
+				-- 		-- Source
+				-- 		vim_item.menu = ({
+				-- 			nvim_lsp = "[LSP]",
+				-- 			luasnip = "[Snippet]",
+				-- 			buffer = "[Buffer]",
+				-- 			["render-markdown"] = "[MD]",
+				-- 		})[entry.source.name]
+				-- 		return vim_item
+				-- 	end,
+				-- },
 				mapping = cmp.mapping.preset.insert({
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
