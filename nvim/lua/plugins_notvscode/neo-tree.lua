@@ -5,6 +5,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 		"MunifTanjim/nui.nvim",
+		"s1n7ax/nvim-window-picker",
 	},
 	init = function()
 		-- do nothing
@@ -45,5 +46,10 @@ return {
 		vim.keymap.set("n", "<leader>n", ":Neotree filesystem reveal right<CR>", {})
 		vim.keymap.set("n", "<leader>b", ":Neotree buffers reveal right<CR>", {})
 		vim.keymap.set("n", "<leader>gg", ":Neotree git_status reveal right<CR>", {})
+
+		require("window-picker").setup({
+			show_prompt = false,
+			hint = "floating-big-letter",
+		})
 	end,
 }
