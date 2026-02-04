@@ -39,3 +39,6 @@ SAVEHIST=10000
 setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_all_dups
+
+# --- zoxide ---
+eval "$(zoxide init zsh)"
