@@ -7,6 +7,7 @@ return {
 		"MunifTanjim/nui.nvim",
 		"s1n7ax/nvim-window-picker",
 	},
+	event = "VeryLazy",
 	init = function()
 		-- do nothing
 	end,
