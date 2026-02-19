@@ -10,7 +10,7 @@ return {
 		config = function()
 			local builtin = require("telescope.builtin")
 
-			vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope live grep" })
+			vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
 			vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
 			vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
 			vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
@@ -19,16 +19,16 @@ return {
 			vim.keymap.set("n", "<leader>fwg", function()
 				local word = vim.fn.expand("<cword>")
 				builtin.grep_string({ search = word })
-			end)
+			end, { desc = "Telescope grep string under cursor" })
 			vim.keymap.set("n", "<leader>fwwg", function()
 				local word = vim.fn.expand("<cWORD>")
 				builtin.grep_string({ search = word })
-			end)
+			end, { desc = "Telescope grep WORD under cursor" })
 			vim.keymap.set("v", "<leader>fg", function()
 				vim.cmd([[noau normal! "hy]])
 				local visual_selection = vim.fn.getreg("h")
 				builtin.grep_string({ search = visual_selection })
-			end)
+			end, { desc = "Telescope grep visual selection" })
 
 			require("telescope").setup({
 				defaults = {
