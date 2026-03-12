@@ -22,13 +22,20 @@ if vim.fn.has("nvim-0.11") == 1 then
 					chat = {
 						adapter = {
 							name = "copilot",
-							model = "claude-sonnet-4.5",
+							-- model = "claude-sonnet-4.6",
+							model = "gpt-4.1",
 						},
 					},
 					inline = {
 						adapter = {
 							name = "copilot",
-							model = "claude-sonnet-4.5",
+							model = "gpt-4.1",
+						},
+					},
+					cmd = {
+						adapter = {
+							name = "copilot",
+							model = "gpt-4.1",
 						},
 					},
 				},
