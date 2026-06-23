@@ -7,6 +7,7 @@ vim.cmd("set relativenumber")
 vim.cmd("set ignorecase")
 vim.cmd("set smartcase")
 vim.cmd("set signcolumn=no")
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
@@ -75,4 +76,3 @@ vim.api.nvim_create_autocmd("FileType", {
 -- vim.keymap.set("n", "rp", function()
 -- 	return "<cmd>-" .. vim.v.count .. "t.<cr>"
 -- end, { expr = true })
-
