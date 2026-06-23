@@ -8,11 +8,11 @@ return {
 		"s1n7ax/nvim-window-picker",
 	},
 	event = "VeryLazy",
-	init = function()
-		-- do nothing
-	end,
 	config = function()
 		require("neo-tree").setup({
+			window = {
+				position = "right",
+			},
 			filesystem = {
 				filtered_items = {
 					visible = true,
@@ -24,29 +24,21 @@ return {
 				},
 				window = {
 					mappings = {
-						["<leader>p"] = "preview_in_explorer", -- " or another map
+						["<leader>p"] = "preview_in_explorer",
 					},
 				},
 				commands = {
 					preview_in_explorer = function(state)
 						local node = state.tree:get_node()
-						-- if node.type == "file" then
-						-- ensure imagemagic is installed
-						-- os.execute("display " .. node.path .. "&")
 						os.execute("explorer.exe `wslpath -w '" .. node.path .. "'`&")
-						-- end
 					end,
 				},
 			},
 		})
-		require("neo-tree.command").execute({
-			action = "wrong_action", -- not sure what to put here to keep closed on startup
-			source = "filesystem",
-			position = "right",
-		})
-		vim.keymap.set("n", "<leader>n", ":Neotree filesystem reveal right<CR>", {})
-		vim.keymap.set("n", "<leader>b", ":Neotree buffers reveal right<CR>", {})
-		vim.keymap.set("n", "<leader>gg", ":Neotree git_status reveal right<CR>", {})
+
+		vim.keymap.set("n", "<leader>n", "<cmd>Neotree filesystem reveal right<CR>", { desc = "Neo-tree filesystem" })
+		vim.keymap.set("n", "<leader>b", "<cmd>Neotree buffers reveal right<CR>", { desc = "Neo-tree buffers" })
+		vim.keymap.set("n", "<leader>gg", "<cmd>Neotree git_status reveal right<CR>", { desc = "Neo-tree git status" })
 
 		require("window-picker").setup({
 			show_prompt = false,
