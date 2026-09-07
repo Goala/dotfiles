@@ -18,11 +18,11 @@ if vim.fn.has("nvim-0.11") == 1 then
 						},
 					},
 				},
+				-- chat: Cursor agent CLI; inline/cmd: Copilot for fast in-buffer edits
 				strategies = {
 					chat = {
 						adapter = {
 							name = "copilot",
-							-- model = "claude-sonnet-4.6",
 							model = "gpt-4.1",
 						},
 					},
