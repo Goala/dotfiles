@@ -65,6 +65,71 @@ vim.keymap.set("v", "<leader>yp", function()
 	copy_path_with_lines(start_line, end_line)
 end, { desc = "Copy relative file path with line number or range" })
 
+local function set_clipboard(text)
+	vim.fn.setreg("+", text)
+	vim.fn.setreg('"', text)
+end
+
+vim.keymap.set("v", "<leader>ya", function()
+	local path = vim.fn.expand("%:.")
+	if path == "" then
+		vim.notify("No file path to copy", vim.log.levels.WARN)
+		return
+	end
+
+	local start_pos = vim.fn.getpos("v")
+	local end_pos = vim.fn.getpos(".")
+	local lines = vim.fn.getregion(start_pos, end_pos, { type = vim.fn.mode() })
+	local selection = table.concat(lines, "\n")
+
+	local start_line = math.min(start_pos[2], end_pos[2])
+	local end_line = math.max(start_pos[2], end_pos[2])
+	local ext = vim.fn.expand("%:e")
+	local lang = ext ~= "" and ext or "text"
+
+	set_clipboard(string.format("```%s:%s:%d-%d\n%s\n```", lang, path, start_line, end_line, selection))
+end, { desc = "Copy selection as code block for agent" })
+
+vim.keymap.set("n", "<leader>yd", function()
+	local path = vim.fn.expand("%")
+	if path == "" then
+		vim.notify("No file to diff", vim.log.levels.WARN)
+		return
+	end
+
+	local diff = vim.fn.systemlist({ "git", "diff", "--", path })
+	if vim.v.shell_error ~= 0 or #diff == 0 then
+		diff = vim.fn.systemlist({ "git", "diff", "--cached", "--", path })
+	end
+
+	if #diff == 0 then
+		vim.notify("No git diff for this file", vim.log.levels.WARN)
+		return
+	end
+
+	set_clipboard(table.concat(diff, "\n"))
+end, { desc = "Copy git diff for current file" })
+
+vim.keymap.set("n", "<leader>ye", function()
+	local bufnr = vim.api.nvim_get_current_buf()
+	local diags = vim.diagnostic.get(bufnr)
+	if #diags == 0 then
+		vim.notify("No diagnostics in buffer", vim.log.levels.WARN)
+		return
+	end
+
+	local path = vim.fn.expand("%:.")
+	local lines = { string.format("# Diagnostics: %s", path) }
+	for _, d in ipairs(diags) do
+		table.insert(
+			lines,
+			string.format("%s:%d:%d %s", path, d.lnum + 1, d.col + 1, d.message:gsub("\n", " "))
+		)
+	end
+
+	set_clipboard(table.concat(lines, "\n"))
+end, { desc = "Copy diagnostics for agent" })
+
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
