@@ -27,7 +27,13 @@ return {
 			require("mason").setup()
 			require("mason-lspconfig").setup({
 				automatic_installation = true,
-				ensure_installed = { "lua_ls" },
+				ensure_installed = {
+					"lua_ls",
+					"ts_ls",
+					"html",
+					"jsonls",
+					"bashls",
+				},
 				handlers = {
 					function(server_name)
 						vim.lsp.config(server_name, {
