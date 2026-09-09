@@ -29,6 +29,48 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set("v", "<leader>s", [["hy:%s/\V<C-r>h/<C-r>h/gc<Left><Left><Left>]])
 vim.keymap.set("n", "<C-W>t", ":tabe %<CR>")
 
+local function copy_path_with_lines(start_line, end_line)
+	local path = vim.fn.expand("%:.")
+	if path == "" then
+		vim.notify("No file path to copy", vim.log.levels.WARN)
+		return
+	end
+
+	if start_line > end_line then
+		start_line, end_line = end_line, start_line
+	end
+
+	local text
+	if start_line == end_line then
+		text = string.format("%s:%d", path, start_line)
+	else
+		text = string.format("%s:%d-%d", path, start_line, end_line)
+	end
+
+	vim.fn.setreg("+", text)
+	vim.fn.setreg('"', text)
+end
+
+vim.keymap.set("n", "<leader>yp", function()
+	local line = vim.api.nvim_win_get_cursor(0)[1]
+	copy_path_with_lines(line, line)
+end, { desc = "Copy relative file path with line number" })
+
+vim.keymap.set("v", "<leader>yp", function()
+	local mode = vim.fn.mode()
+	local start_line, end_line
+
+	if mode == "v" or mode == "V" or mode == "\22" then
+		start_line = vim.fn.line("v")
+		end_line = vim.fn.line(".")
+	else
+		start_line = vim.fn.line("'<")
+		end_line = vim.fn.line("'>")
+	end
+
+	copy_path_with_lines(start_line, end_line)
+end, { desc = "Copy relative file path with line number or range" })
+
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
