@@ -50,6 +50,15 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
+		vim.keymap.set("n", "<leader>gf", function()
+			vim.lsp.buf.format({
+				filter = function(client)
+					return client.name == "null-ls"
+				end,
+			})
+			-- Formatting invalidates diagnostic extmarks without always triggering
+			-- a new publishDiagnostics from the LSP; re-show cached diagnostics.
+			vim.diagnostic.show(nil, 0)
+		end, { desc = "Format buffer" })
 	end,
 }

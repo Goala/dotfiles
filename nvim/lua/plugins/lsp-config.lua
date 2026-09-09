@@ -20,7 +20,12 @@ return {
 			vim.diagnostic.config({
 				virtual_text = true,
 				float = { border = border },
-				current_line = true,
+				jump = {
+					wrap = true,
+					on_jump = function(_, bufnr)
+						vim.diagnostic.open_float(bufnr, { scope = "cursor", focus = false })
+					end,
+				},
 				-- virtual_lines = true,
 			})
 
@@ -60,11 +65,13 @@ return {
 			vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Show diagnostics" })
 			vim.keymap.set("n", "gal", builtin.diagnostics, { desc = "List diagnostics" })
 
-			-- Move to the previous diagnostic
-			-- vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, {})
+			vim.keymap.set("n", "[d", function()
+				vim.diagnostic.jump({ count = -1 })
+			end, { desc = "Previous diagnostic" })
 
-			-- Move to the next diagnostic
-			-- vim.keymap.set("n", "]d", vim.diagnostic.goto_next, {})
+			vim.keymap.set("n", "]d", function()
+				vim.diagnostic.jump({ count = 1 })
+			end, { desc = "Next diagnostic" })
 		end,
 	},
 }
