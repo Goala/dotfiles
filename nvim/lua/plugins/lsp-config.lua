@@ -15,32 +15,11 @@ return {
 		},
 		config = function()
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-			-- Set LSP borders via autocmd to ensure they apply
-			vim.api.nvim_create_autocmd("LspAttach", {
-				callback = function()
-					local border = {
-						{ "╭", "FloatBorder" },
-						{ "─", "FloatBorder" },
-						{ "╮", "FloatBorder" },
-						{ "│", "FloatBorder" },
-						{ "╯", "FloatBorder" },
-						{ "─", "FloatBorder" },
-						{ "╰", "FloatBorder" },
-						{ "│", "FloatBorder" },
-					}
-					vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-						border = border,
-					})
-					vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-						border = border,
-					})
-				end,
-			})
+			local border = "rounded"
 
 			vim.diagnostic.config({
 				virtual_text = true,
-				float = { border = "rounded" },
+				float = { border = border },
 				current_line = true,
 				-- virtual_lines = true,
 			})
@@ -61,13 +40,17 @@ return {
 
 			local builtin = require("telescope.builtin")
 
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP hover" })
+			vim.keymap.set("n", "K", function()
+				vim.lsp.buf.hover({ border = border })
+			end, { desc = "LSP hover" })
 			vim.keymap.set("n", "gd", builtin.lsp_definitions, { desc = "LSP definitions" })
 			vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "LSP declaration" })
 			vim.keymap.set("n", "gi", builtin.lsp_implementations, { desc = "LSP implementations" })
 			vim.keymap.set("n", "go", builtin.lsp_type_definitions, { desc = "LSP type definitions" })
 			vim.keymap.set("n", "grr", builtin.lsp_references, { desc = "LSP references" })
-			vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, { desc = "LSP signature help" })
+			vim.keymap.set("n", "gs", function()
+				vim.lsp.buf.signature_help({ border = border })
+			end, { desc = "LSP signature help" })
 			vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Show diagnostics" })
 			vim.keymap.set("n", "gal", builtin.diagnostics, { desc = "List diagnostics" })
 
