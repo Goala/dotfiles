@@ -50,15 +50,43 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "<leader>gf", function()
+		local function should_format(bufnr)
+			if not vim.api.nvim_buf_is_valid(bufnr) then
+				return false
+			end
+			if not vim.bo[bufnr].modifiable or vim.bo[bufnr].buftype ~= "" then
+				return false
+			end
+			if vim.bo[bufnr].filetype == "" then
+				return false
+			end
+			return #vim.lsp.get_clients({ bufnr = bufnr, name = "null-ls" }) > 0
+		end
+
+		local function format_buf(bufnr)
+			bufnr = bufnr or vim.api.nvim_get_current_buf()
+			if not should_format(bufnr) then
+				return
+			end
 			vim.lsp.buf.format({
+				bufnr = bufnr,
 				filter = function(client)
 					return client.name == "null-ls"
 				end,
 			})
 			-- Formatting invalidates diagnostic extmarks without always triggering
 			-- a new publishDiagnostics from the LSP; re-show cached diagnostics.
-			vim.diagnostic.show(nil, 0)
+			vim.diagnostic.show(nil, bufnr)
+		end
+
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			callback = function(args)
+				format_buf(args.buf)
+			end,
+		})
+
+		vim.keymap.set("n", "<leader>gf", function()
+			format_buf()
 		end, { desc = "Format buffer" })
 	end,
 }
